@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication_table</title>
+    <style>
+        body{
+            font-family: Arial sans-serif ; text-align:center;
+        }
+        table{
+            margin:auto;border-collapse:collapse;width:20%
+        }
+        th td{
+            border:1px solid black; padding:10px; text-align: center;
+        }
+        input{
+            padding:10px; font-size:16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>multiplication table of {{num}}</h2>
+    <form method="post">
+        {%csrf_token%}
+        <label>Enter a number:</label>
+        <input type="number", name="number" required>
+        <button type="button">Generate Table</button>
+        </form>
+        {%if num is not None%}
+    <table>
+    <tr>
+        <th>multiplier</th>
+        <th>result</th>
+    </tr>
+    {%for key,value in table.items%}
+    <tr>
+    <td>{{key}}*{{num}}</td>
+    <td>{{value}}</td>
+    </tr>
+    {%endfor%}
+    {%endif%}
+</table>
+
+</body>
+</html>
