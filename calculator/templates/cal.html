@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+</head>
+<body>
+    <h2>simple calculator</h2>
+    <form method="POST">
+        {%csrf_token%}
+        <label>enter first number:</label>
+        <input type="number",name='num1' step="any" required>
+        <label>enter second number:</label>
+        <input type="number",name='num2' step="any" required>
+        <label>select operation</label>
+        <select  name="operation" required>
+            <option value="add" >Addition(+)</option>
+            <option value="substract" >substract(-)</option>
+            <option value="multply" >multiply(*)</option>
+            <option value="divide" >divide(/)</option>
+        </select>
+        <button type="submit">calculate</button>
+    </form>
+    {%if result is not None%}
+    <h4>result:{{result}}</h4>
+    {%endif%}
+    {%if error%}
+      <p class="error">{{error}}</p>
+    {%endif%}
+
+
+</body>
+</html>
